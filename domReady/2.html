@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+    <title>推荐方法</title>
+</head>
+<body>
+<div class="">
+    <img src="http://www.nasa.gov/images/content/84857main_EC04-0325-23_lg.jpg" width="200" />
+</div>
+<script>
+    addDOMLoadEvent = (function(){
+
+        // create event function stack
+        var load_events = [],
+                load_timer,
+                script,
+                done,
+                exec,
+                old_onload,
+                init = function () {
+                    done = true;
+                    /*//停止调用计时器*/
+                    // kill the timer
+                    clearInterval(load_timer);
+
+                    // execute each function in the stack in the order they were added
+                    while (exec = load_events.shift())
+                        exec();
+
+                    if (script) script.onreadystatechange = '';
+                };
+
+        return function (func) {
+            // if the init function was already ran, just run this function now and stop
+            if (done) return func();
+
+            if (!load_events[0]) {
+
+                // for Mozilla/Opera9
+                /*
+                 DOMContentLoaded是firefox下特有的Event, 当所有DOM解析完以后会触发这个事件。
+                 注册DOMContentLoaded事件，如果支持的话
+                 */
+                if (document.addEventListener)
+                    document.addEventListener("DOMContentLoaded", init, false);
+
+                // for Internet Explorer
+                /*
+                 对于IE则使用条件注释，并使用script标签的defer属性
+                 IE中可以给script标签添加一个defer(延迟)属性，这样，标签中的脚本只有当DOM加载完毕后才执行*/
+
+                /*@cc_on @*/
+                /*@if (@_win32)
+                 document.write("<script id=__ie_onload defer src=//0><\/scr"+"ipt>");
+                 script = document.getElementById("__ie_onload");
+                 script.onreadystatechange = function() {
+                 if (this.readyState == "complete")
+                 init(); // call the onload handler
+                 };
+                 /*@end @*/
+
+                // for Safari
+                /*
+                 但对于Safari，我们需要使用setInterval方法不断检测document.readyState
+                 当为loaded或complete的时候表明DOM已经加载完毕
+                 */
+
+                if (/WebKit/i.test(navigator.userAgent)) { // sniff
+                    load_timer = setInterval(function() {
+                        if (/loaded|complete/.test(document.readyState))
+                            init(); // call the onload handler
+                    }, 10);
+                }
+
+                // for other browsers set the window.onload, but also execute the old window.onload
+                old_onload = window.onload;
+                window.onload = function() {
+                    init();
+                    if (old_onload) old_onload();
+                };
+            }
+
+            load_events.push(func);
+        }
+    })();
+    function something() {
+        alert('a');
+    }
+    addDOMLoadEvent(something);
+
+    addDOMLoadEvent(function() {
+        alert('b');
+    });
+</script>
+</body>
+</html>
