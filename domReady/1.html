@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+    <title>window.onload的完美解决方案</title>
+</head>
+<body>
+<div class="">
+    <img src="http://www.nasa.gov/images/content/84857main_EC04-0325-23_lg.jpg" width="200" />
+</div>
+<script>
+function loadFn(){
+    alert('页面所有元素加载完毕');
+}
+window.onload = function(){
+    loadFn()
+}
+
+</script>
+</body>
+</html>
