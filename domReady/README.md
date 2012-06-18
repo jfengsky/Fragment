@@ -46,5 +46,6 @@ document.addEventListener("DOMContentLoaded", ff_test, false);
  init(); // call the onload handler
  };
  /*@end @*/
+ */
 </pre>
 这里利用了浏览器的条件编译<code>@cc_on</code>，测试看到，当页面打开后立即触发<code>alert</code>，图片也在加载中...
