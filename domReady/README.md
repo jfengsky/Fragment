@@ -50,3 +50,8 @@ document.write("<script id=__ie_onload defer src=//0><\/scr"+"ipt>");
 </script>
 </pre>
 这里利用了浏览器的条件编译<code>@cc_on</code>，测试看到，当页面打开后立即触发<code>alert</code>，图片也在加载中...
+
+####3. webkit内核浏览器的解决办法
+我们需要使用<code>setInterval</code>方法不断检测<code>document.readyState</code>当为loaded或complete的时候表明DOM已经加载完毕
+
+示例：webkit.html

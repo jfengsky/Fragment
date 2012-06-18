@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+<title>webkit内核浏览器的解决办法</title>
+</head>
+<body>
+请用chrome或者safari测试
+<br />
+<img src="http://www.nasa.gov/images/content/84857main_EC04-0325-23_lg.jpg" width="200" />
+<script>
+var tag = true;
+if(tag == true){
+    if (/WebKit/i.test(navigator.userAgent)) {
+        load_timer = setInterval(function() {
+            if (/loaded|complete/.test(document.readyState))
+                clearInterval(load_timer);
+            tag = false;
+            alert('a');
+
+        }, 10);
+
+    }
+}
+
+</script>
+</body>
+</html>
