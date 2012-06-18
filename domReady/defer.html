@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+    <title>IE 下用defer来hack</title>
+</head>
+<body>
+请用ie浏览器测试
+<br />
+<img src="http://www.nasa.gov/images/content/84857main_EC04-0325-23_lg.jpg" width="200" />
+<script>
+/*@cc_on @*/
+/*@if (@_win32)
+ document.write("<script id=__ie_onload defer src=//0><\/scr"+"ipt>");
+ script = document.getElementById("__ie_onload");
+ script.onreadystatechange = function() {
+ if (this.readyState == "complete")
+  alert('a');
+ };
+@end @*/
+</script>
+</body>
+</html>
