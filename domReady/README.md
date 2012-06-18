@@ -36,16 +36,23 @@ document.addEventListener("DOMContentLoaded", ff_test, false);
 对于IE则使用条件注释，并使用script标签的<code>defer</code>属性，IE中可以给script标签添加一个defer(延迟)属性，这样，标签中的脚本只有当DOM加载完毕后才执行
 
 示例：defer.html
-<pre>
+
 /*@cc_on @*/
+
 /*@if (@_win32)
- document.write("<script id=__ie_onload defer src=//0><\/scr"+"ipt>");
- script = document.getElementById("__ie_onload");
- script.onreadystatechange = function() {
- if (this.readyState == "complete")
- init(); // call the onload handler
- };
- /*@end @*/
- */
-</pre>
+
+document.write("<script id=__ie_onload defer src=//0><\/scr"+"ipt>");
+
+    script = document.getElementById("__ie_onload");
+
+    script.onreadystatechange = function() {
+
+        if (this.readyState == "complete")
+
+        init(); // call the onload handler
+
+    };
+
+@end @*/
+
 这里利用了浏览器的条件编译<code>@cc_on</code>，测试看到，当页面打开后立即触发<code>alert</code>，图片也在加载中...
