@@ -9,11 +9,15 @@
 <script>
 (function(){
     window['domready'] = function(fn){
+        /**
+         * 判断浏览器
+         * firefox,webkit525以上版本和ie9支持DOMContentLoaded事件
+         */
         fn();
     }
 })();
 domready(function(){
-    alert('dom is ready \n'  + navigator.userAgent);
+    alert('dom is ready ');
 });
 </script>
 </body>

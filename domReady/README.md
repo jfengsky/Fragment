@@ -61,3 +61,9 @@ jQuery对于IE的解决方案，使用了一种新的方法，该方法源自htt
 2.<a href="http://wyz.67ge.com/javascript-domready/" target="_blank">主流JS框架中DOMReady事件的实现</a>
 
 3.<a href="http://www.cnblogs.com/zhangziqiu/archive/2011/06/27/DOMReady.html" target="_blank">DOM Ready 概述 </a>
+
+4.<a href="http://dustindiaz.com/smallest-domready-ever" target="_blank">国外牛人写的最短domready方法</a>
+<pre>
+function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+//使用方法 document.addEventListener('DOMContentLoaded',f)
+</pre>
