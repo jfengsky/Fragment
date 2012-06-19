@@ -13,11 +13,42 @@
          * 判断浏览器
          * firefox,webkit525以上版本和ie9支持DOMContentLoaded事件
          */
+        var UA = {
+            agent: navigator.userAgent,
+            firefox:function(){
+                /*
+                 var Reg = /firefox/ig;
+                if(Reg.test(UA.agent)){
+                    return true;
+                }else{
+                    return false;
+                }
+                */
+                return /firefox/ig.test(UA.agent) ? true : false;
+            },
+            ie:function(){
+                var Reg = /MSIE/ig;
+                if(Reg.test(UA.agent)){
+                    return true;
+                }else{
+                    return false;
+                }
+            },
+            webkit:function(){
+                var Reg = /WebKit/ig;
+                if(Reg.test(UA.agent)){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        };
+        alert(UA.ie());
         fn();
     }
 })();
 domready(function(){
-    alert('dom is ready ');
+    alert('dom is ready \n' + navigator.userAgent);
 });
 </script>
 </body>
