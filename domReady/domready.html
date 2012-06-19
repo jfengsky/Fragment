@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+    <title>自己写的domready 解决方案</title>
+</head>
+<body>
+<img src="http://www.nasa.gov/images/content/84857main_EC04-0325-23_lg.jpg" width="200" />
+<script>
+(function(){
+    window['domready'] = function(fn){
+        fn();
+    }
+})();
+domready(function(){
+    alert('dom is ready \n'  + navigator.userAgent);
+});
+</script>
+</body>
+</html>
