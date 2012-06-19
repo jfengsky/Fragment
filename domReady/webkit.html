@@ -12,7 +12,7 @@
 var tag = true;
 if(tag == true){
     if (/WebKit/i.test(navigator.userAgent)) {
-        load_timer = setInterval(function() {
+        var load_timer = setInterval(function() {
             if (/loaded|complete/.test(document.readyState))
                 clearInterval(load_timer);
             tag = false;
