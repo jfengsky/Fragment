@@ -1,12 +1,12 @@
 /*
 *	选中输入框,提示文字变淡,输入内容时提示消失
 */
-KISSY.use('dom, event', function(S, D, E) {
+KISSY.use('dom, event', function (S, D, E) {
   /**
   * [Labfocus description]
   * @param {string} id  [input id]
   * @param {string} lab [label id]
-  * @param {string} gray [forcus class]
+  * @param {string} gray [focus class]
   */
 
   function Labfocus(id, lab, gray) {
