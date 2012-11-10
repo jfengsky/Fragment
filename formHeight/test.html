@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>框架自适应高度</title>
+  <style>
+  body{
+    margin:0;
+    padding:0;
+    font-size:12px;
+  }
+  </style>
+</head>
+<body>
+注意：在firefox里，当iframe在处于隐藏状态时，是去不到高度的，只有显示出来才行。
+<iframe src="inside.html" scrolling="no" frameborder="0" width="100%" height="100%" id="J_outIframe" name="outIframe" style="border:1px solid #06f"></iframe>
+<script>
+window.onload = function(){
+  if(!document.all){
+    alert($('J_outIframe').contentDocument.body.offsetHeight);
+  }else{
+    alert($('J_outIframe').contentWindow.document.documentElement.scrollHeight);
+  }
+}
+function $(id){
+  return document.getElementById(id);
+};
+</script>
+</body>
+</html>

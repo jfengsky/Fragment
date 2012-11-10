@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>框架页</title>
+<style>
+body{
+  margin:0;
+  padding:0;
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<div class="" style="background-color:#ccc" id="J_cont">
+  内容高度:<input type="text" id="J_scrollHeight"></br>
+  可视区高度:<input type="text" id="J_clientHeight">
+  <input type="button" value="增加高度" id="J_addHeight">
+</div>
+<script>
+  function $(id){
+    return document.getElementById(id);
+  };
+  window.onload = function(){
+    function divHeight(){
+      if(!!window.Components){
+        $('J_scrollHeight').value = document.body.scrollHeight;
+      }else{
+        $('J_scrollHeight').value = document.documentElement.scrollHeight;
+      }
+      $('J_clientHeight').value = document.documentElement.clientHeight;
+    }
+    divHeight();
+    var add_height = 60;
+    $('J_addHeight').onclick = function(){
+      $('J_cont').style.height = add_height + 'px';
+      add_height = add_height + 10;
+      divHeight();
+    }
+  }
+</script>
+</body>
+</html>
