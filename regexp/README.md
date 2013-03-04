@@ -14,3 +14,9 @@ var reg = /模式字符串/模式修饰符;		//自变量表示法
 #####RegExp包含2个方法
 * <code>test()</code>: 匹配后返回true或false
 * <code>exec()</code>: 匹配后返回数组
+
+#####String提供的方法
+* <code>match(pattern)</code> 返回pattern中的子串或者null
+* <code>replace()</code>
+* <code>search()</code>
+* <code>split()</code>
